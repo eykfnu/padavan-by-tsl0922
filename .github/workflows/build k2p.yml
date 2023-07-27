@@ -1,17 +1,19 @@
-name: build
+name: build k2p
 
-on: 
-  push:
-    branches:
-    - "*"
-  workflow_dispatch:
+on:
+
+  watch:
+
+    types: started
+
+    
 
 jobs:
   build:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
-        target: [K2P, K2P-NANO, K2P-USB]
+        target: [K2P]
         toolchain: [mipsel-linux-uclibc, mipsel-linux-musl]
     steps:
       - uses: actions/checkout@v3
